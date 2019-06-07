@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Export.Pdf\Export.Pdf.csproj">
+      <Project>{a2d47214-0f44-4950-83db-a9c8430467c1}</Project>
+      <Name>Export.Pdf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export.Xlsx\Export.Xlsx.csproj">
+      <Project>{fa389053-10c6-4385-99d8-d21e41533722}</Project>
+      <Name>Export.Xlsx</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
