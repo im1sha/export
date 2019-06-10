@@ -11,11 +11,12 @@ namespace Export
     {
         static void Main(string[] args)
         {
-            var person = new Person() {FirstName = "Kirill", LastName="Boika" };
+            var person = new Person() { FirstName = "Kirill", LastName = "Boika" };
 
-            var fonXlsx = new ToXlsx<Person>();
+            var fonXlsx = new ToXlsx();
 
             fonXlsx.Export(person);
+
 
         }
     }

@@ -8,15 +8,15 @@ using Export;
 
 namespace Export.Xlsx
 {
-    public class ToXlsx<T> : IFormatBuilder<T>
+    public class ToXlsx : IFormatBuilder
     {
-        public void Export(T item)
+        public void Export<T>(T item) where T : Person
         {
             using (var workbook = new XLWorkbook())
-            { 
+            {
                 var worksheet = workbook.Worksheets.Add("List_1");
-                worksheet.Cell("A1").Value = "Hello";
-                worksheet.Cell("A2").Value = item;
+                worksheet.Cell("A1").Value = item.FirstName;
+                worksheet.Cell("B1").Value = item.LastName;
                 workbook.SaveAs("Person.xlsx");
             }
         }
