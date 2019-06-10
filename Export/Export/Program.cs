@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Export.Xlsx;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,12 @@ namespace Export
     {
         static void Main(string[] args)
         {
+            var person = new Person() {FirstName = "Kirill", LastName="Boika" };
+
+            var fonXlsx = new FonXlsx<Person>();
+
+            fonXlsx.Export(person);
+
         }
     }
 }
