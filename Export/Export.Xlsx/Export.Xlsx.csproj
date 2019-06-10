@@ -43,8 +43,8 @@
     <Reference Include="FastMember, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FastMember.1.5.0\lib\net461\FastMember.dll</HintPath>
     </Reference>
-    <Reference Include="FastMember.Signed, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastMember.Signed.1.3.0\lib\net45\FastMember.Signed.dll</HintPath>
+    <Reference Include="FastMember.Signed, Version=1.5.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.5.0\lib\net461\FastMember.Signed.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FonXlsx.cs" />
+    <Compile Include="ToXlsx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

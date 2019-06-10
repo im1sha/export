@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Export.Xlsx
 {
-    public class FonXlsx<T>
+    public class ToXlsx<T>
     {
         public void Export(T item)
         {

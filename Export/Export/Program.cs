@@ -13,7 +13,7 @@ namespace Export
         {
             var person = new Person() {FirstName = "Kirill", LastName="Boika" };
 
-            var fonXlsx = new FonXlsx<Person>();
+            var fonXlsx = new ToXlsx<Person>();
 
             fonXlsx.Export(person);
 
