@@ -5,13 +5,13 @@ using System.Reflection;
 
 namespace Export.Pdf
 {
-    public class ToPdf<T>: IFormatBuilder<T>
+    public class ToPdf: IFormatBuilder
     {
         private const int LINE_HEIGHT = 50;
 
         private const string FILE_NAME = "EXPORT.pdf";
 
-        public void Export(T item)
+        public void ToStream<T>(T item, Stream stream)
         {
             PdfDocument doc = new PdfDocument();
             PdfPage page = doc.AddPage();
@@ -29,7 +29,7 @@ namespace Export.Pdf
                 page.Add(elem);
             }
 
-            doc.Save(FILE_NAME);
+            doc.Save(stream);
             doc.Close();
         }
     }

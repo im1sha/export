@@ -9,7 +9,7 @@ namespace Export
     {
         private static void Main(string[] args)
         {
-              
+            TestPdf.Test();
         }
     }
 }

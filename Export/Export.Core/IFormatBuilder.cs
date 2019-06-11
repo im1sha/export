@@ -1,7 +1,9 @@
-﻿namespace Export.Core
+﻿using System.IO;
+
+namespace Export.Core
 {
-    public interface IFormatBuilder<T>
+    public interface IFormatBuilder
     {
-        void Export(T item);
+        void ToStream<T>(T item, Stream stream);
     }
 }

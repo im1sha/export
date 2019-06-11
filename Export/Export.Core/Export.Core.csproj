@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="IFormatBuilder.cs" />
     <Compile Include="IDocumentGenerator.cs" />
-    <Compile Include="IFormatBuilder2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
