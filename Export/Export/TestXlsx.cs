@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data;
 using Export.Xlsx;
 
 namespace Export
@@ -13,17 +14,15 @@ namespace Export
         {
             IEnumerable<Person> list = new List<Person>()
             {
-                new Person() { FirstName = "Kirill", LastName = "Boika" },
-                new Person() { FirstName = "Mishail", LastName = "Ovchelupov" },
-                new Person() { FirstName = "Anton", LastName = "Ivanov" },
-                new Person() { FirstName = "Sergey", LastName = "Petorv" },
-                new Person() { FirstName = "Pasha", LastName = "Xabibulin" },
-                new Person() { FirstName = "Dima", LastName = "Kak-to-Tak" }
+                new Person ( "Kirill",  "Boika" ),
+                new Person ( "1",  "4" ),
+                new Person ( "2",  "5" ),
+                new Person ( "3",  "6" ),         
             };
 
             var fonXlsx = new ToXlsx();
 
-            fonXlsx.Export2(list);
+            //fonXlsx.Export2(list);
         }
     }
 }

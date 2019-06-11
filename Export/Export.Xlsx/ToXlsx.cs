@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Export;
 using System.IO;
+using Export.Core;
+using Data;
 
 namespace Export.Xlsx
 {
-    public class ToXlsx : IFormatBuilder
+    public class ToXlsx : IFormatBuilder2
     {
         public void Export<T>(T item) where T : Person
         {
