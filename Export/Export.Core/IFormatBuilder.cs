@@ -4,6 +4,6 @@ namespace Export.Core
 {
     public interface IFormatBuilder
     {
-        void ToStream<T>(T item, Stream stream);
+        void ToStream(Stream stream);
     }
 }
