@@ -14,15 +14,15 @@ namespace Export
         {
             IEnumerable<Person> list = new List<Person>()
             {
-                new Person ( "Kirill",  "Boika" ),
-                new Person ( "1",  "4" ),
-                new Person ( "2",  "5" ),
-                new Person ( "3",  "6" ),         
+                new Person ( "1",  "2" ),
+                new Person ( "3",  "4" ),
+                new Person ( "5",  "6" ),
+                new Person ( "7",  "8" ),         
             };
 
-            var fonXlsx = new ToXlsx();
+            var forXlsx = new ToXlsx<IEnumerable<Person>>();
 
-            //fonXlsx.Export2(list);
+            forXlsx.Export(list);
         }
     }
 }
