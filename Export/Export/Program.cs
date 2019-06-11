@@ -11,11 +11,7 @@ namespace Export
     {
         static void Main(string[] args)
         {
-            var person = new Person() {FirstName = "Kirill", LastName="Boika" };
-
-            var fonXlsx = new ToXlsx<Person>();
-
-            fonXlsx.Export(person);
+            TestXlsx.TestForXlsx();
 
         }
     }
