@@ -20,7 +20,7 @@ namespace Export
                 new Person ( "7",  "8" ),         
             };
 
-            var forXlsx = new ToXlsx();
+            var forXlsx = new ToXlsx<IEnumerable<Person>>();
 
             forXlsx.Export(list);
         }

@@ -11,9 +11,10 @@ using Data;
 
 namespace Export.Xlsx
 {
-    public class ToXlsx : IFormatBuilder
+    public class ToXlsx<T> : IFormatBuilder 
+        where T: IEnumerable<Person> 
     {
-        public void Export<T>(T item) where T : IEnumerable<Person>
+        public void Export(T item)
         {
             using (var workbook = new XLWorkbook())
             {
