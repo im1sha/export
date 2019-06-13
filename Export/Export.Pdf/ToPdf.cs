@@ -10,7 +10,7 @@ namespace Export.Pdf
     
     public class ToPdf : IPdfFormatBuilder
     {
-        private readonly List<(int x, int y, string value)> _state;
+        private readonly IEnumerable<string> _state;
 
         private const int CELL_HEIGHT = 30;
         private const int CELL_WIDTH = 50;
@@ -21,7 +21,7 @@ namespace Export.Pdf
 
         public ToPdf()
         {
-            _state = new List<(int x, int y, string value)>();
+            _state = new List<string>();
         }
 
 
@@ -32,35 +32,36 @@ namespace Export.Pdf
         /// </summary>
         private PdfDocument CreateDocument(List<(int x, int y, string value)> state)
         {
-            PdfDocument result = new PdfDocument();
+            //PdfDocument result = new PdfDocument();
 
-            int totalX = state.Max(val => val.x);
-            int totalY = state.Max(val => val.y);
+            //int totalX = state.Max(val => val.x);
+            //int totalY = state.Max(val => val.y);
 
-            int height = totalX * CELL_HEIGHT;
-            int width = totalY * CELL_WIDTH;
+            //int height = totalX * CELL_HEIGHT;
+            //int width = totalY * CELL_WIDTH;
 
-            PdfPage page = result.AddPage(
-                new PdfCustomPageSize(width + DEFAULT_MARGIN * 2, height + DEFAULT_MARGIN * 2),
-                new PdfMargins(DEFAULT_MARGIN));
+            //PdfPage page = result.AddPage(
+            //    new PdfCustomPageSize(width + DEFAULT_MARGIN * 2, height + DEFAULT_MARGIN * 2),
+            //    new PdfMargins(DEFAULT_MARGIN));
 
-            PdfFont font = result.AddFont(FONT);
-            font.Size = FONT_SIZE;
+            //PdfFont font = result.AddFont(FONT);
+            //font.Size = FONT_SIZE;
 
 
-            for (int i = 0; i < _state.Count; i++)
-            {
-                int left = _state[i].x * CELL_WIDTH + DEFAULT_MARGIN;
-                int top = _state[i].y * CELL_HEIGHT + DEFAULT_MARGIN;
+            //for (int i = 0; i < _state.Count; i++)
+            //{
+            //    int left = _state[i].x * CELL_WIDTH + DEFAULT_MARGIN;
+            //    int top = _state[i].y * CELL_HEIGHT + DEFAULT_MARGIN;
 
-                PdfTextElement elem = new PdfTextElement(left ,top , _state[i].value, font);
+            //    PdfTextElement elem = new PdfTextElement(left ,top , _state[i].value, font);
 
-                PdfRectangleElement cell = new PdfRectangleElement(left, top, CELL_WIDTH, CELL_HEIGHT);
-                page.Add(cell);
-                page.Add(elem);
-            }
+            //    PdfRectangleElement cell = new PdfRectangleElement(left, top, CELL_WIDTH, CELL_HEIGHT);
+            //    page.Add(cell);
+            //    page.Add(elem);
+            //}
 
-            return result;
+            //return result;
+            throw new NotImplementedException();
         }
 
 
@@ -76,14 +77,16 @@ namespace Export.Pdf
 
         public void SetCellValue(int x, int y, string value)
         {
-            _state.Add((x, y, value));
+            throw new NotImplementedException();
+            //_state.Add((x, y, value));
         }
 
         public void ToStream(Stream stream)
         {
-            PdfDocument doc = CreateDocument(_state);
-            doc.Save(stream);
-            doc.Close();
+            throw new NotImplementedException();
+            //PdfDocument doc = CreateDocument(_state);
+            //doc.Save(stream);
+            //doc.Close();
         }
     }
 }
