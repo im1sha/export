@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentMapper.cs" />
     <Compile Include="IFormatBuilder.cs" />
     <Compile Include="IDocumentGenerator.cs" />
     <Compile Include="IPdfFormatBuilder.cs" />
