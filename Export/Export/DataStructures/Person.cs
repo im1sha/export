@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Export.Data
+namespace Export.DataStructures
 {
     public class Person
     {

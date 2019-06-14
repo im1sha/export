@@ -43,12 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDocumentGenerator.cs" />
-    <Compile Include="Data\Person.cs" />
-    <Compile Include="PersonExportInfrastructure.cs" />
+    <Compile Include="Txt\PersonsSimpleTxtDocumentGenerator.cs" />
+    <Compile Include="Txt\PersonsTxtDocumentContentMapper.cs" />
+    <Compile Include="_IDocumentGenerator.cs" />
+    <Compile Include="DataStructures\Person.cs" />
+    <Compile Include="Base\DocumentGenerator.cs" />
+    <Compile Include="Base\IDocumentGenerator.cs" />
+    <Compile Include="Base\IDocumentBuilder.cs" />
+    <Compile Include="Base\IDocumentContentMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pdf\ToPdf.cs" />
+    <Compile Include="Txt\ITxtDocumentBuilder.cs" />
+    <Compile Include="Txt\SimpleTxtDocumentBuilder.cs" />
     <Compile Include="Xlsx\ToXlsx.cs" />
   </ItemGroup>
   <ItemGroup>
