@@ -73,15 +73,5 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{649ca1a3-b1e1-4058-b4dd-a63dbfbfbde1}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.Core\Export.Core.csproj">
-      <Project>{456B8F36-040B-4C65-993D-3A6D927B981A}</Project>
-      <Name>Export.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

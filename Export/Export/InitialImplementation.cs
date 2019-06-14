@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Demo
 {
@@ -21,17 +22,26 @@ namespace Demo
         }
     }
 
+    //using (FileStream s = new FileStream(_path, FileMode.Create)) { }
+
+
     public static class Facade
     {
         public static void SavePersonsToTxtFile(IEnumerable<IPerson> persons, string path)
         {
-            new PersonToTxtMapper<TxtFormatBuilder, IPerson>(
-                new TxtDocumentGenerator<TxtFormatBuilder>(path),
-                new TxtFormatBuilder()).Save(persons);
+            throw new NotImplementedException(nameof(Facade));
+
+            //PersonToTxtMapper<TxtFormatBuilder, IPerson> mapper = 
+            //    new PersonToTxtMapper<TxtFormatBuilder, IPerson>();
+
+            //mapper.Map(new TxtDocumentGenerator<TxtFormatBuilder>(path),
+            //     new TxtFormatBuilder());
+
+            //mapper.Export(persons);
         }
     }
 
-    #region iformatbuilder support
+    #region IFormatBuilder support
 
     public interface IFormatBuilder { void ToStream(Stream stream); }
 
@@ -53,12 +63,15 @@ namespace Demo
 
         public void ToStream(Stream stream)
         {
-            using (StreamWriter sw = new StreamWriter(stream))
+            using (StreamWriter writer = 
+                new StreamWriter(stream, Encoding.UTF8, 4096, true /*!it's important to leave disposing to caller*/ ))
             {
                 foreach (string item in _state)
                 {
-                    sw.WriteLine(item);
+                    writer.WriteLine(item);
                 }
+
+                writer.Flush();
             }
         }
     }
@@ -66,65 +79,68 @@ namespace Demo
     #endregion
 
 
-    #region idocumentgenerator support
+    #region IDocumentGenerator support
 
-    public interface IDocumentGenerator<T> where T : IFormatBuilder { void Generate(T builder); }
+    public interface IDocumentGenerator<TContent> { void Generate(Stream stream, TContent builder); }
 
-    public interface ITxtDocumentGenerator<T> : IDocumentGenerator<T> where T : ITxtFormatBuilder { }
-
-    public class TxtDocumentGenerator<T> : ITxtDocumentGenerator<T>
-        where T : ITxtFormatBuilder
+    public class DocumentGenerator<TContent> : IDocumentGenerator<TContent> 
     {
-        private readonly string _path;
-        public TxtDocumentGenerator(string path)
-        {
-            _path = path;
-        }
+        private readonly IContentMapper<IFormatBuilder, TContent> _mapper;
+        private readonly IFormatBuilder _builder;
 
-        public void Generate(T builder)
+        public DocumentGenerator(IContentMapper<IFormatBuilder, TContent> mapper, ITxtFormatBuilder builder)
         {
-            if (builder == null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
-
-            using (FileStream s = new FileStream(_path, FileMode.Create))
-            {
-                builder.ToStream(s);
-            }
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _builder = builder ?? throw new ArgumentNullException(nameof(builder));
         }
+  
+        public void Generate(Stream stream, TContent content)
+        {
+            _mapper.Map(_builder, content);
+            _builder.ToStream(stream);
+        }      
     }
 
-    #endregion
 
-
-    #region contentmapper
-
-    public abstract class ContentMapper<TBuilder, TContent>
-        where TBuilder : class, IFormatBuilder
-        where TContent : class
+    public class TxtDocumentGenerator<TContent> : DocumentGenerator<TContent>
     {
-        protected IDocumentGenerator<TBuilder> _documentGenerator;
-        protected TBuilder _builder;
+        private readonly IContentMapper<ITxtFormatBuilder, TContent> _mapper;
+        private readonly ITxtFormatBuilder _builder;
 
-        public ContentMapper(IDocumentGenerator<TBuilder> documentGenerator, TBuilder builder)
+        public TxtDocumentGenerator(IContentMapper<ITxtFormatBuilder, TContent> mapper,
+            ITxtFormatBuilder builder)
         {
-            _documentGenerator = documentGenerator ?? throw new ArgumentNullException(nameof(documentGenerator));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _builder = builder ?? throw new ArgumentNullException(nameof(builder));
         }
 
-        public abstract void Save(IEnumerable<TContent> content);
     }
 
-    public class PersonToTxtMapper<TBuilder, TContent> : ContentMapper<TBuilder, TContent>
-        where TBuilder : class, ITxtFormatBuilder
-        where TContent : class, IPerson
-    {
-        public PersonToTxtMapper(ITxtDocumentGenerator<TBuilder> documentGenerator, TBuilder builder) :
-            base(documentGenerator, builder)
-        { }
+    #endregion
 
-        public override void Save(IEnumerable<TContent> content)
+
+    #region icontentmapper support
+
+    public interface IContentMapper<TBuilder, TContent>
+    {
+        void Map(TBuilder builder, TContent content);
+    }
+
+    public class ContentMapper<TBuilder, TContent>  where TBuilder : class, IFormatBuilder
+    {
+        //protected IDocumentGenerator<TBuilder> _documentGenerator;
+        //protected TBuilder _builder;
+
+
+        //public override void Export(IEnumerable<TContent> content)
+        //{
+        //    foreach (TContent item in content)
+        //    {
+        //        _builder.AddString(item.FirstName + " " + item.LastName);
+        //    }
+        //    _documentGenerator.Generate(_builder);
+        //}
+        public void Map(TBuilder builder, TContent content)
         {
             foreach (TContent item in content)
             {
@@ -132,6 +148,23 @@ namespace Demo
             }
             _documentGenerator.Generate(_builder);
         }
+
+    }
+
+    public class PersonToTxtMapper<TBuilder, TContent> : ContentMapper<TBuilder, TContent>
+        where TBuilder : class, ITxtFormatBuilder
+        where TContent : IPerson
+    {
+        public void Map(TBuilder documentGenerator, TBuilder builder)
+        {
+            if (!(documentGenerator is ITxtDocumentGenerator<TBuilder>))
+            {
+                throw new ArgumentException();
+            }
+            base.Map(documentGenerator, builder);
+        }
+
+     
     }
     #endregion
 
