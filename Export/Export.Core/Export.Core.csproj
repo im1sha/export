@@ -46,11 +46,5 @@
     <Compile Include="IPdfFormatBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{649CA1A3-B1E1-4058-B4DD-A63DBFBFBDE1}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
