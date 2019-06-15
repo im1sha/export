@@ -1,13 +1,12 @@
 ﻿using Export.Base;
 using Export.DataStructures;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Export.Txt
 {
+    /// <summary>
+    /// Generates <see cref="Person"/> content to the .txt document using <see cref="ITxtDocumentBuilder"/>
+    /// </summary>
     public class PersonsSimpleTxtDocumentGenerator : DocumentGenerator<ITxtDocumentBuilder, IEnumerable<Person>>
     {
         public PersonsSimpleTxtDocumentGenerator(ITxtDocumentBuilder documentBuilder,

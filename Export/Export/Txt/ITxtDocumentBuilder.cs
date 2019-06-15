@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Export.Base;
+﻿using Export.Base;
 
 namespace Export.Txt
 {
+    /// <summary>
+    /// Represents structure of .txt document
+    /// </summary>
     public interface ITxtDocumentBuilder : IDocumentBuilder
     {
+        /// <summary>
+        /// Adds string to the document
+        /// </summary>
+        /// <param name="text">Content to add</param>
         void AddString(string text);
     }
 
