@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Txt\PersonsSimpleTxtDocumentGenerator.cs" />
     <Compile Include="Txt\PersonsTxtDocumentContentMapper.cs" />
+    <Compile Include="Xlsx\IXlsxDocumentBuilder.cs" />
+    <Compile Include="Xlsx\PersonsSimpleXlsxDocumentGenerator.cs" />
+    <Compile Include="Xlsx\PersonsXlsxDocumentContentMapper.cs" />
+    <Compile Include="Xlsx\SimpleXlsxDocumentBuilder.cs" />
     <Compile Include="_IDocumentGenerator.cs" />
     <Compile Include="DataStructures\Person.cs" />
     <Compile Include="Base\DocumentGenerator.cs" />
