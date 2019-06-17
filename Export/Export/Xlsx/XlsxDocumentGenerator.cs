@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Export.Xlsx
 {
-    public class PersonsSimpleXlsxDocumentGenerator: DocumentGenerator<IXlsxDocumentBuilder, IEnumerable<Person>>
+    public class XlsxDocumentGenerator: DocumentGenerator<IXlsxDocumentBuilder, IEnumerable<Person>>
     {
-        public PersonsSimpleXlsxDocumentGenerator(IXlsxDocumentBuilder documentBuilder,
+        public XlsxDocumentGenerator(IXlsxDocumentBuilder documentBuilder,
             IDocumentContentMapper<IXlsxDocumentBuilder, IEnumerable<Person>> documentContentMapper) : base(
             documentBuilder, documentContentMapper)
         {

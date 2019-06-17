@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Export.Xlsx
 {
-    public class SimpleXlsxDocumentBuilder : IXlsxDocumentBuilder
+    public class XlsxDocumentBuilder : IXlsxDocumentBuilder
     {
         private readonly List<string> _text;
 
-        public SimpleXlsxDocumentBuilder()
+        public XlsxDocumentBuilder()
         {
             _text = new List<string>();
         }

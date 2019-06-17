@@ -46,9 +46,9 @@
     <Compile Include="Txt\PersonsSimpleTxtDocumentGenerator.cs" />
     <Compile Include="Txt\PersonsTxtDocumentContentMapper.cs" />
     <Compile Include="Xlsx\IXlsxDocumentBuilder.cs" />
-    <Compile Include="Xlsx\PersonsSimpleXlsxDocumentGenerator.cs" />
-    <Compile Include="Xlsx\PersonsXlsxDocumentContentMapper.cs" />
-    <Compile Include="Xlsx\SimpleXlsxDocumentBuilder.cs" />
+    <Compile Include="Xlsx\XlsxDocumentGenerator.cs" />
+    <Compile Include="Xlsx\XlsxDocumentContentMapper.cs" />
+    <Compile Include="Xlsx\XlsxDocumentBuilder.cs" />
     <Compile Include="_IDocumentGenerator.cs" />
     <Compile Include="DataStructures\Person.cs" />
     <Compile Include="Base\DocumentGenerator.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="Pdf\ToPdf.cs" />
     <Compile Include="Txt\ITxtDocumentBuilder.cs" />
     <Compile Include="Txt\SimpleTxtDocumentBuilder.cs" />
-    <Compile Include="Xlsx\ToXlsx.cs" />
+    <Compile Include="Xlsx\_ToXlsx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

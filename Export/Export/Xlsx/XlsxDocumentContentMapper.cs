@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Export.Xlsx
 { 
-    public class PersonsXlsxDocumentContentMapper: IDocumentContentMapper<IXlsxDocumentBuilder, IEnumerable<Person>>
+    public class XlsxDocumentContentMapper: IDocumentContentMapper<IXlsxDocumentBuilder, IEnumerable<Person>>
     {
         public void MapContent(IXlsxDocumentBuilder documentBuilder, IEnumerable<Person> content)
         {
