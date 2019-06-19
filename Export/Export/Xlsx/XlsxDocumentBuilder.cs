@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,29 +10,42 @@ namespace Export.Xlsx
 {
     public class XlsxDocumentBuilder : IXlsxDocumentBuilder
     {
-        private readonly List<string> _text;
+        //private readonly List<string> _text;
+
+        private readonly string[,] _text;
 
         public XlsxDocumentBuilder()
         {
-            _text = new List<string>();
+            _text = new string[2,2];
         }
 
         public void ToStream(Stream stream)
         {
-            using (var writer = new StreamWriter(stream, Encoding.UTF8, 4096, true))
+            using (var workbook = new XLWorkbook()) 
             {
-                foreach (var item in _text)
+                var worksheet = workbook.Worksheets.Add("List_1");
+
+                int row = 0;
+                for (int i = 1; i < _text.Length - 1; i++)
                 {
-                    writer.WriteLine(item);
+                    for (int j = 1; j <= i; j++)
+                    {
+                        int colum = 0;
+                        worksheet.Cell(i, j).Value = _text[row, colum];
+                        colum++;
+                        j++;
+                        worksheet.Cell(i, j).Value = _text[row, colum];
+                        row++;
+                    }
                 }
 
-                writer.Flush();
+                workbook.SaveAs(stream);
             }
         }
 
         public void SetCellValue(int rowIndex, int columnIndex, string value)
         {
-            throw new NotImplementedException();
+            _text[rowIndex, columnIndex] = value;
         }
 
     }
