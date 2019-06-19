@@ -1,5 +1,5 @@
 ﻿using Export.DataStructures;
-using Export.Txt;
+using Export.Pdf;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,16 +11,17 @@ namespace Export
         private static void Main(string[] args)
         {
 
-            using (FileStream file = File.Create("test.txt"))
+            using (FileStream file = File.Create("test.pdf"))
             {
-                PersonsSimpleTxtDocumentGenerator docGen = new PersonsSimpleTxtDocumentGenerator(new SimpleTxtDocumentBuilder(),
-                    new PersonsTxtDocumentContentMapper());
+                PersonsPdfDocumentGenerator docGen = new PersonsPdfDocumentGenerator(
+                    new PdfDocumentBuilder(2),
+                    new PersonsPdfDocumentContentMapper());
 
                 docGen.Generate(file, new List<Person>
                 {
                     new Person
                     {
-                        Name = "user 1",
+                        Name = "tuysagrfteotrfiuetwyifwsedrtfyguiodiuhcgydhjsfuheidfhsfhehfksuegehrjghksifygwheukfhwg",
                         Surname = "test 1"
                     },
                     new Person
@@ -32,7 +33,6 @@ namespace Export
             }
 
             Console.WriteLine("Done");
-            Console.ReadKey();
         }
     }
 }

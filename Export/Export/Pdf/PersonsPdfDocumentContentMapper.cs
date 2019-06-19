@@ -14,6 +14,8 @@ namespace Export.Pdf
         /// <param name="content">Content to map</param>
         public void MapContent(IPdfDocumentBuilder documentBuilder, IEnumerable<Person> content)
         {
+            documentBuilder.AddRow(new string[] { "Name", "Surname" });
+
             foreach (var person in content)
             {
                 documentBuilder.AddRow(new string[] { person.Name, person.Surname });
