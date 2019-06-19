@@ -8,16 +8,13 @@ using System.Collections.Generic;
 
 namespace Export
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class DefaultCompositionRoot : ICompositionRoot
     {
         /// <summary>
-        /// 
+        /// Generates <see cref="object"/> related to passed <see cref="Type"/>
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <param name="type">Type to resolve</param>
+        /// <returns>Expected <see cref="object"/></returns>
         public object Resolve(Type type)
         {
             if (type == typeof(DocumentGenerator<IPdfDocumentBuilder, IEnumerable<Person>>))

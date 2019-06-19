@@ -2,16 +2,13 @@
 
 namespace Export
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public interface ICompositionRoot
     {
         /// <summary>
-        /// 
+        /// Returns <see cref="object"/> related to the given <see cref="Type"/> 
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <param name="type">Type to resolve</param>
+        /// <returns>Expected <see cref="object"/></returns>
         object Resolve(Type type);
     }
 }

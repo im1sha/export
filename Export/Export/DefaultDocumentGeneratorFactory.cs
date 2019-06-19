@@ -6,13 +6,12 @@ using System;
 
 namespace Export
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class DefaultDocumentGeneratorFactory : IDocumentGeneratorFactory
     {
         /// <summary>
-        /// 
+        /// Object intended to resolve relations between 
+        /// content to process/requred output format and 
+        /// existing <see cref="DocumentGenerator{TBuilder, TContent}"/>
         /// </summary>
         private readonly ICompositionRoot _compositionRoot;
 
@@ -22,11 +21,13 @@ namespace Export
         }
 
         /// <summary>
-        /// 
+        /// Creates <see cref="IDocumentGenerator{TContent}"/> 
+        /// intended to process given content
+        /// and generate requested <see cref="DocumentType"/>
         /// </summary>
-        /// <typeparam name="TContent"></typeparam>
-        /// <param name="documentType"></param>
-        /// <returns></returns>
+        /// <typeparam name="TContent">Content to process</typeparam>
+        /// <param name="documentType">Output type</param>
+        /// <returns>Requested generator</returns>
         public IDocumentGenerator<TContent> Create<TContent>(DocumentType documentType)
         {
             switch (documentType)
