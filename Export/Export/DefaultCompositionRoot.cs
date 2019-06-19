@@ -1,6 +1,7 @@
 ﻿using Export.Base;
 using Export.DataStructures;
 using Export.Pdf;
+using Export.Txt;
 using Export.Xlsx;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,14 @@ namespace Export
             else if (type == typeof(DocumentGenerator<IXlsxDocumentBuilder, IEnumerable<Person>>))
             {
                 return new XlsxDocumentGenerator(
-                  new XlsxDocumentBuilder(),
-                  new XlsxDocumentContentMapper());
+                    new XlsxDocumentBuilder(),
+                    new XlsxDocumentContentMapper());
+            }
+            else if (type == typeof(DocumentGenerator<ITxtDocumentBuilder, IEnumerable<Person>>))
+            {
+                return new PersonsSimpleTxtDocumentGenerator(
+                    new SimpleTxtDocumentBuilder(),
+                    new PersonsTxtDocumentContentMapper());
             }
 
             throw new ArgumentOutOfRangeException(nameof(type), type, null);

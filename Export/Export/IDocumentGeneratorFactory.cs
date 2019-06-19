@@ -6,5 +6,4 @@ namespace Export
     {
         IDocumentGenerator<TContent> Create<TContent>(DocumentType documentType);
     }
-
 }

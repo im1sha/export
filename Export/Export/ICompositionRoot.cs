@@ -6,5 +6,4 @@ namespace Export
     {
         object Resolve(Type type);
     }
-
 }
