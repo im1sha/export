@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export.Base", "Export.Base\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export.DataStructures", "Export.DataStructures\Export.DataStructures.csproj", "{D3109551-967D-4567-9C5A-003F3DF9F632}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{1267367C-AC4C-4D31-903C-9D7F2E509BE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D3109551-967D-4567-9C5A-003F3DF9F632}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3109551-967D-4567-9C5A-003F3DF9F632}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3109551-967D-4567-9C5A-003F3DF9F632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1267367C-AC4C-4D31-903C-9D7F2E509BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1267367C-AC4C-4D31-903C-9D7F2E509BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1267367C-AC4C-4D31-903C-9D7F2E509BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1267367C-AC4C-4D31-903C-9D7F2E509BE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

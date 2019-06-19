@@ -1,9 +1,10 @@
-﻿using Export.DataStructures;
+﻿using Export;
+using Export.DataStructures;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Export
+namespace Demo
 {
     internal class Program
     {
