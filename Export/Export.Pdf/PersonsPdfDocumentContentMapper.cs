@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Export.Pdf
 {
+    /// <summary>
+    /// Parses input
+    /// </summary>
     public class PersonsPdfDocumentContentMapper : IDocumentContentMapper<IPdfDocumentBuilder, IEnumerable<Person>>
     {
         /// <summary>
@@ -18,7 +21,12 @@ namespace Export.Pdf
 
             foreach (var person in content)
             {
-                documentBuilder.AddRow(new string[] { person.Name, person.Surname });
+                if (person == null)
+                {
+                    continue;
+                }
+
+                documentBuilder.AddRow(new string[] { person.Name ?? "", person.Surname ?? "" });
             }
         }
     }

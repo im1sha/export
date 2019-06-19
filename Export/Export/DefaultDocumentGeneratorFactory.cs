@@ -6,8 +6,14 @@ using System;
 
 namespace Export
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DefaultDocumentGeneratorFactory : IDocumentGeneratorFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly ICompositionRoot _compositionRoot;
 
         public DefaultDocumentGeneratorFactory(ICompositionRoot compositionRoot)
@@ -15,6 +21,12 @@ namespace Export
             _compositionRoot = compositionRoot ?? throw new ArgumentNullException(nameof(compositionRoot));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TContent"></typeparam>
+        /// <param name="documentType"></param>
+        /// <returns></returns>
         public IDocumentGenerator<TContent> Create<TContent>(DocumentType documentType)
         {
             switch (documentType)

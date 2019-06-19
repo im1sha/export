@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Export.Pdf
 {
@@ -10,12 +11,12 @@ namespace Export.Pdf
     /// </summary>
     public class PdfDocumentBuilder : IPdfDocumentBuilder
     {
-        private static readonly (float Width, float Height) _defaultCell = (100, 30);
+        private static readonly (float Width, float Height) _defaultCell = (120, 20);
 
-        private static readonly (PdfStandardFont Name, float Size) _defaultFont = (PdfStandardFont.Helvetica, 10);
+        private static readonly (PdfStandardFont Name, float Size) _defaultFont = (PdfStandardFont.Helvetica, 20);
 
         /// <summary>
-        /// Returns active font if it have been set yet.
+        /// Returns active font if it already have been set.
         /// Sets font and returns it otherwise.
         /// </summary>
         private PdfFont Font
@@ -59,7 +60,7 @@ namespace Export.Pdf
                     throw new ApplicationException(nameof(_state));
                 }
 
-                return TotalColumns * _defaultCell.Width;
+                return _state.Max(row => row.Length) * _defaultCell.Width;
             }
         }
 
@@ -94,23 +95,8 @@ namespace Export.Pdf
         /// </summary>
         private readonly List<string[]> _state;
 
-        /// <summary>
-        /// Table width 
-        /// </summary>
-        public int TotalColumns { get; }
-
-        /// <summary>
-        /// PdfDocumentBuilder constructor
-        /// </summary>
-        /// <param name="columns">Table width</param>
-        public PdfDocumentBuilder(int columns)
+        public PdfDocumentBuilder()
         {
-            if (columns < 0)
-            {
-                throw new ArgumentException($"Argument {nameof(columns)} should have positive value.");
-            }
-
-            TotalColumns = columns;
             _state = new List<string[]>();
         }
 
@@ -120,12 +106,6 @@ namespace Export.Pdf
         /// <param name="values">Values to append</param>
         public void AddRow(string[] values)
         {
-            if (values.Length != TotalColumns)
-            {
-                throw new ArgumentException($"{nameof(values)} should have length " +
-                    $"that equals to value of {nameof(TotalColumns)} ({TotalColumns}).");
-            }
-
             _state.Add(values);
         }
 

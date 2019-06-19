@@ -8,14 +8,22 @@ using System.Collections.Generic;
 
 namespace Export
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DefaultCompositionRoot : ICompositionRoot
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public object Resolve(Type type)
         {
             if (type == typeof(DocumentGenerator<IPdfDocumentBuilder, IEnumerable<Person>>))
             {
                 return new PersonsPdfDocumentGenerator(
-                    new PdfDocumentBuilder(2),
+                    new PdfDocumentBuilder(),
                     new PersonsPdfDocumentContentMapper());
             }
             else if (type == typeof(DocumentGenerator<IXlsxDocumentBuilder, IEnumerable<Person>>))

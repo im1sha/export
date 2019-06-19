@@ -19,10 +19,16 @@ namespace Export
 
                 docGen.Generate(file, new List<Person>
                 {
+                    null,
                     new Person
                     {
-                        Name = "tuysagrfteotrfiuetwyifwsedrtfyguiodiuhcgydhjsfuheidfhsfhehfksuegehrjghksifygwheukfhwg",
+                        Name = "user 1",
                         Surname = "test 1"
+                    },
+                    new Person
+                    {
+                        Name = null,
+                        Surname = null
                     },
                     new Person
                     {
