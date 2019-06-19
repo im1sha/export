@@ -91,7 +91,6 @@
     <Compile Include="Pdf\_ToPdf.cs" />
     <Compile Include="Txt\ITxtDocumentBuilder.cs" />
     <Compile Include="Txt\SimpleTxtDocumentBuilder.cs" />
-    <Compile Include="Xlsx\_ToXlsx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
