@@ -14,6 +14,10 @@ namespace Export.Pdf
 
         private static readonly (PdfStandardFont Name, float Size) _defaultFont = (PdfStandardFont.Helvetica, 10);
 
+        /// <summary>
+        /// Returns active font if it have been set yet.
+        /// Sets font and returns it otherwise.
+        /// </summary>
         private PdfFont Font
         {
             get
