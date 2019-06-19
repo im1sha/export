@@ -1,38 +1,36 @@
-﻿using System;
+﻿using ClosedXML.Excel;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Export.Xlsx
 {
     public class XlsxDocumentBuilder : IXlsxDocumentBuilder
     {
-        private readonly List<string> _text;
+        private readonly List<(int rowIndex, int columnIndex, string value)> content;
 
         public XlsxDocumentBuilder()
         {
-            _text = new List<string>();
+            content = new List<(int rowIndex, int columnIndex, string value)>();
         }
 
         public void ToStream(Stream stream)
         {
-            using (var writer = new StreamWriter(stream, Encoding.UTF8, 4096, true))
+            using (var workbook = new XLWorkbook()) 
             {
-                foreach (var item in _text)
+                var worksheet = workbook.Worksheets.Add("List_1");
+
+                for (int i = 0; i < content.Count; i++)
                 {
-                    writer.WriteLine(item);
+                     worksheet.Cell(content[i].rowIndex + 1, content[i].columnIndex + 1).Value = content[i].value;
                 }
 
-                writer.Flush();
+                workbook.SaveAs(stream);
             }
         }
 
         public void SetCellValue(int rowIndex, int columnIndex, string value)
         {
-            throw new NotImplementedException();
+            content.Add((rowIndex, columnIndex, value));
         }
-
     }
 }
