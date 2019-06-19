@@ -13,9 +13,10 @@ namespace Export
 
             using (FileStream file = File.Create("test.pdf"))
             {
-                PersonsPdfDocumentGenerator docGen = new PersonsPdfDocumentGenerator(
-                    new PdfDocumentBuilder(2),
-                    new PersonsPdfDocumentContentMapper());
+                DefaultDocumentGeneratorFactory factory = new DefaultDocumentGeneratorFactory(
+                    new DefaultCompositionRoot());
+
+                var docGen = factory.Create<IEnumerable<Person>>(DocumentType.Pdf);
 
                 docGen.Generate(file, new List<Person>
                 {

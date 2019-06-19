@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1B8F811-BCC1-4324-91E1-A5D984B6E21A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Export</RootNamespace>
-    <AssemblyName>Export</AssemblyName>
+    <ProjectGuid>{E0748D87-EAF2-4B6A-9C0B-92A206142D67}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Export.Pdf</RootNamespace>
+    <AssemblyName>Export.Pdf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,31 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Select.Pdf, Version=19.1.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.Pdf.19.1.0\lib\net40\Select.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultDocumentGeneratorFactory.cs" />
-    <Compile Include="DocumentType.cs" />
-    <Compile Include="DefaultCompositionRoot.cs" />
-    <Compile Include="ICompositionRoot.cs" />
-    <Compile Include="IDocumentGeneratorFactory.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="IPdfDocumentBuilder.cs" />
+    <Compile Include="PdfDocumentBuilder.cs" />
+    <Compile Include="PersonsPdfDocumentContentMapper.cs" />
+    <Compile Include="PersonsPdfDocumentGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Export.Base\Export.Base.csproj">
@@ -68,18 +60,9 @@
       <Project>{d3109551-967d-4567-9c5a-003f3df9f632}</Project>
       <Name>Export.DataStructures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Export.Pdf\Export.Pdf.csproj">
-      <Project>{e0748d87-eaf2-4b6a-9c0b-92a206142d67}</Project>
-      <Name>Export.Pdf</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.Txt\Export.Txt.csproj">
-      <Project>{679fc664-c366-4453-a7f6-466b7a701e1c}</Project>
-      <Name>Export.Txt</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.Xlsx\Export.Xlsx.csproj">
-      <Project>{b20a079f-cfb2-4817-9016-12dbd493dae8}</Project>
-      <Name>Export.Xlsx</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

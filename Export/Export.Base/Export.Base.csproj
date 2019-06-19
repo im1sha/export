@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1B8F811-BCC1-4324-91E1-A5D984B6E21A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Export</RootNamespace>
-    <AssemblyName>Export</AssemblyName>
+    <ProjectGuid>{82760AEB-C6B6-4883-B6EF-331E99F7246E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Export.Base</RootNamespace>
+    <AssemblyName>Export.Base</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,51 +33,19 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultDocumentGeneratorFactory.cs" />
-    <Compile Include="DocumentType.cs" />
-    <Compile Include="DefaultCompositionRoot.cs" />
-    <Compile Include="ICompositionRoot.cs" />
-    <Compile Include="IDocumentGeneratorFactory.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DocumentGenerator.cs" />
+    <Compile Include="IDocumentBuilder.cs" />
+    <Compile Include="IDocumentContentMapper.cs" />
+    <Compile Include="IDocumentGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Export.Base\Export.Base.csproj">
-      <Project>{82760aeb-c6b6-4883-b6ef-331e99f7246e}</Project>
-      <Name>Export.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.DataStructures\Export.DataStructures.csproj">
-      <Project>{d3109551-967d-4567-9c5a-003f3df9f632}</Project>
-      <Name>Export.DataStructures</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.Pdf\Export.Pdf.csproj">
-      <Project>{e0748d87-eaf2-4b6a-9c0b-92a206142d67}</Project>
-      <Name>Export.Pdf</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.Txt\Export.Txt.csproj">
-      <Project>{679fc664-c366-4453-a7f6-466b7a701e1c}</Project>
-      <Name>Export.Txt</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.Xlsx\Export.Xlsx.csproj">
-      <Project>{b20a079f-cfb2-4817-9016-12dbd493dae8}</Project>
-      <Name>Export.Xlsx</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
