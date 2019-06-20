@@ -11,26 +11,26 @@ namespace Demo
         private static void Main(string[] args)
         {
 
-            using (FileStream file = File.Create("test.pdf"))
+            using (FileStream file = File.Create("test.xlsx"))
             {
                 DefaultDocumentGeneratorFactory factory = new DefaultDocumentGeneratorFactory(
                     new DefaultCompositionRoot());
 
-                var docGen = factory.Create<IEnumerable<Person>>(DocumentType.Pdf);
+                var docGen = factory.Create<IEnumerable<Person>>(DocumentType.Xslx);
 
                 docGen.Generate(file, new List<Person>
                 {
-                    null,
+                   // null,
                     new Person
                     {
                         Name = "user 1",
                         Surname = "test 1"
                     },
-                    new Person
-                    {
-                        Name = null,
-                        Surname = null
-                    },
+                    //new Person
+                    //{
+                    //    Name = null,
+                    //    Surname = null
+                    //},
                     new Person
                     {
                         Name = "user 2",
