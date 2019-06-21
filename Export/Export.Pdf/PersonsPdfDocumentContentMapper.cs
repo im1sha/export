@@ -1,5 +1,5 @@
 ﻿using Export.Base;
-using Export.DataStructures;
+using DataStructures;
 using System.Collections.Generic;
 
 namespace Export.Pdf

@@ -130,8 +130,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonContext.cs" />
+    <Compile Include="Models\PersonInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +171,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
+      <Project>{4353491f-5ed4-466b-9755-91691b99eebf}</Project>
+      <Name>DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export.Base\Export.Base.csproj">
+      <Project>{82760aeb-c6b6-4883-b6ef-331e99f7246e}</Project>
+      <Name>Export.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export\Export.csproj">
+      <Project>{c1b8f811-bcc1-4324-91e1-a5d984b6e21a}</Project>
+      <Name>Export</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

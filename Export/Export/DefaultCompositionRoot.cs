@@ -1,5 +1,5 @@
 ﻿using Export.Base;
-using Export.DataStructures;
+using DataStructures;
 using Export.Pdf;
 using Export.Txt;
 using Export.Xlsx;

@@ -62,13 +62,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
+      <Project>{4353491f-5ed4-466b-9755-91691b99eebf}</Project>
+      <Name>DataStructures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Export.Base\Export.Base.csproj">
       <Project>{82760aeb-c6b6-4883-b6ef-331e99f7246e}</Project>
       <Name>Export.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Export.DataStructures\Export.DataStructures.csproj">
-      <Project>{d3109551-967d-4567-9c5a-003f3df9f632}</Project>
-      <Name>Export.DataStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\Export.Pdf\Export.Pdf.csproj">
       <Project>{e0748d87-eaf2-4b6a-9c0b-92a206142d67}</Project>
