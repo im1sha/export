@@ -1,9 +1,6 @@
 ﻿using DataStructures;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace Demo.Web.Models
 {
@@ -13,8 +10,8 @@ namespace Demo.Web.Models
         {
             var people = new List<Person>()
             {
-                new Person{ Name="User1",Surname="Teste1" },
-                new Person{ Name="User2",Surname="Teste2" }
+                new Person() { Name = "User 1", Surname = "Test 1" },
+                new Person() { Name = "User 2", Surname = "Test 2" }
             };
 
             people.ForEach(p => context.People.Add(p));

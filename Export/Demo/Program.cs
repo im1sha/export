@@ -10,32 +10,43 @@ namespace Demo
     {
         private static void Main(string[] args)
         {
+            DefaultDocumentGeneratorFactory factory = new DefaultDocumentGeneratorFactory();
+
+            var xlsxGenerator = factory.Create<IEnumerable<Person>>(DocumentType.Xlsx);
+            var pdfGenerator = factory.Create<IEnumerable<Person>>(DocumentType.Pdf);
+            var textGenerator = factory.Create<IEnumerable<Person>>(DocumentType.Txt);
+
+            var people = new List<Person>() {
+                new Person
+                {
+                    Name = "user 1",
+                    Surname = "test 1"
+                },
+                new Person
+                {
+                    Name = null,
+                    Surname = null
+                },
+                new Person
+                {
+                    Name = "user 2",
+                    Surname = "test 2"
+                }
+            };
 
             using (FileStream file = File.Create("test.xlsx"))
             {
-                DefaultDocumentGeneratorFactory factory = new DefaultDocumentGeneratorFactory();
+                xlsxGenerator.Generate(file, people);
+            }
 
-                var docGen = factory.Create<IEnumerable<Person>>(DocumentType.Xslx);
+            using (FileStream file = File.Create("test.pdf"))
+            {
+                pdfGenerator.Generate(file, people);
+            }
 
-                docGen.Generate(file, new List<Person>
-                {
-                   // null,
-                    new Person
-                    {
-                        Name = "user 1",
-                        Surname = "test 1"
-                    },
-                    //new Person
-                    //{
-                    //    Name = null,
-                    //    Surname = null
-                    //},
-                    new Person
-                    {
-                        Name = "user 2",
-                        Surname = "test 2"
-                    }
-                });
+            using (FileStream file = File.Create("test.txt"))
+            {
+                textGenerator.Generate(file, people);
             }
 
             Console.WriteLine("Done");

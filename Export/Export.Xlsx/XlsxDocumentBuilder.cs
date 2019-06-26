@@ -15,13 +15,13 @@ namespace Export.Xlsx
 
         public void ToStream(Stream stream)
         {
-            using (var workbook = new XLWorkbook()) 
+            using (var workbook = new XLWorkbook())
             {
                 var worksheet = workbook.Worksheets.Add("List_1");
 
                 for (int i = 0; i < content.Count; i++)
                 {
-                     worksheet.Cell(content[i].rowIndex + 1, content[i].columnIndex + 1).Value = content[i].value;
+                    worksheet.Cell(content[i].rowIndex + 1, content[i].columnIndex + 1).Value = content[i].value;
                 }
 
                 workbook.SaveAs(stream);

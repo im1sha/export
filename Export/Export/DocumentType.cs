@@ -5,7 +5,7 @@
     /// </summary>
     public enum DocumentType
     {
-        Xslx,
+        Xlsx,
         Pdf,
         Txt
     }

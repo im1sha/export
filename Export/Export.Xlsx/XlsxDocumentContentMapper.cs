@@ -1,10 +1,10 @@
-﻿using Export.Base;
-using DataStructures;
+﻿using DataStructures;
+using Export.Base;
 using System.Collections.Generic;
 
-namespace Export.Xlsx   
-{ 
-    public class XlsxDocumentContentMapper: IDocumentContentMapper<IXlsxDocumentBuilder, IEnumerable<Person>>
+namespace Export.Xlsx
+{
+    public class XlsxDocumentContentMapper : IDocumentContentMapper<IXlsxDocumentBuilder, IEnumerable<Person>>
     {
         public void MapContent(IXlsxDocumentBuilder documentBuilder, IEnumerable<Person> content)
         {
@@ -12,7 +12,7 @@ namespace Export.Xlsx
             foreach (var i in content)
             {
                 int colum = 0;
-                documentBuilder.SetCellValue(row, colum,i.Name);
+                documentBuilder.SetCellValue(row, colum, i.Name);
                 colum++;
                 documentBuilder.SetCellValue(row, colum, i.Surname);
                 row++;

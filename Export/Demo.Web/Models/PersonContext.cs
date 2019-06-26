@@ -1,9 +1,5 @@
 ﻿using DataStructures;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace Demo.Web.Models
 {
@@ -16,7 +12,5 @@ namespace Demo.Web.Models
         public DbSet<Person> People { get; set; }
 
     }
-   
-
-
 }
+

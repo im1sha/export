@@ -20,7 +20,7 @@ namespace Export
         {
             switch (documentType)
             {
-                case DocumentType.Xslx:
+                case DocumentType.Xlsx:
                     return (IDocumentGenerator<TContent>)new XlsxDocumentGenerator(
                         new XlsxDocumentBuilder(),
                         new XlsxDocumentContentMapper());
