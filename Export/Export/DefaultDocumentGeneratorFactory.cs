@@ -9,18 +9,6 @@ namespace Export
     public class DefaultDocumentGeneratorFactory : IDocumentGeneratorFactory
     {
         /// <summary>
-        /// Object intended to resolve relations between 
-        /// content to process/requred output format and 
-        /// existing <see cref="DocumentGenerator{TBuilder, TContent}"/>
-        /// </summary>
-        private readonly ICompositionRoot _compositionRoot;
-
-        public DefaultDocumentGeneratorFactory(ICompositionRoot compositionRoot)
-        {
-            _compositionRoot = compositionRoot ?? throw new ArgumentNullException(nameof(compositionRoot));
-        }
-
-        /// <summary>
         /// Creates <see cref="IDocumentGenerator{TContent}"/> 
         /// intended to process given content
         /// and generate requested <see cref="DocumentType"/>
@@ -33,14 +21,17 @@ namespace Export
             switch (documentType)
             {
                 case DocumentType.Xslx:
-                    return (IDocumentGenerator<TContent>)_compositionRoot.Resolve(
-                        typeof(DocumentGenerator<IXlsxDocumentBuilder, TContent>));
+                    return (IDocumentGenerator<TContent>)new XlsxDocumentGenerator(
+                        new XlsxDocumentBuilder(),
+                        new XlsxDocumentContentMapper());
                 case DocumentType.Pdf:
-                    return (IDocumentGenerator<TContent>)_compositionRoot.Resolve(
-                        typeof(DocumentGenerator<IPdfDocumentBuilder, TContent>));
+                    return (IDocumentGenerator<TContent>)new PersonsPdfDocumentGenerator(
+                        new PdfDocumentBuilder(),
+                        new PersonsPdfDocumentContentMapper());
                 case DocumentType.Txt:
-                    return (IDocumentGenerator<TContent>)_compositionRoot.Resolve(
-                        typeof(DocumentGenerator<ITxtDocumentBuilder, TContent>));
+                    return (IDocumentGenerator<TContent>)new PersonsSimpleTxtDocumentGenerator(
+                        new SimpleTxtDocumentBuilder(),
+                        new PersonsTxtDocumentContentMapper());
                 default:
                     throw new ArgumentOutOfRangeException(nameof(documentType), documentType, null);
             }

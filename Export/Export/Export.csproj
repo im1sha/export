@@ -51,8 +51,6 @@
   <ItemGroup>
     <Compile Include="DefaultDocumentGeneratorFactory.cs" />
     <Compile Include="DocumentType.cs" />
-    <Compile Include="DefaultCompositionRoot.cs" />
-    <Compile Include="ICompositionRoot.cs" />
     <Compile Include="IDocumentGeneratorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

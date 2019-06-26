@@ -13,8 +13,7 @@ namespace Demo
 
             using (FileStream file = File.Create("test.xlsx"))
             {
-                DefaultDocumentGeneratorFactory factory = new DefaultDocumentGeneratorFactory(
-                    new DefaultCompositionRoot());
+                DefaultDocumentGeneratorFactory factory = new DefaultDocumentGeneratorFactory();
 
                 var docGen = factory.Create<IEnumerable<Person>>(DocumentType.Xslx);
 
