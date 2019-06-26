@@ -1,6 +1,16 @@
-﻿namespace Test
+﻿using NUnit.Framework;
+
+namespace Test
 {
-    internal class ExportBaseTests
+
+    [TestFixture]
+    public class DocumentGeneratorTest
     {
+        [TestCase()]
+        public void Test()
+        {
+        }
+
     }
+    
 }
