@@ -1,12 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+                /**/
+
+                ViewBag.Title = "Home Page";
 }
 
-
-<input type="button" value="Export Xlsx" />
 <br />
 <br />
-<input type="button" value="Export Pdf" />
+<input class="btn btn-primary" type="submit" value="Txt Export" onclick="location.href='@Url.Action("TextExport", "Home")'"  />
 <br />
 <br />
-<input type="button" value="Export Txt" />
+<input class="btn btn-primary" type="submit" value="Xlsx Export" onclick="location.href='@Url.Action("XlsxExport", "Home")'" />
+<br />
+<br />
+<input class="btn btn-primary" type="submit" value="Pdf Export" onclick="location.href='@Url.Action("PdfExport", "Home")'" />

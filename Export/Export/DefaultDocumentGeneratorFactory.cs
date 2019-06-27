@@ -32,7 +32,7 @@ namespace Export
         {
             switch (documentType)
             {
-                case DocumentType.Xslx:
+                case DocumentType.Xlsx:
                     return (IDocumentGenerator<TContent>)_compositionRoot.Resolve(
                         typeof(DocumentGenerator<IXlsxDocumentBuilder, TContent>));
                 case DocumentType.Pdf:
